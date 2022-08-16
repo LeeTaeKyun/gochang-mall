@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +17,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+Route::get('cafe24-test', [Controller::class, 'test']);
+Route::get('send-mail', function () {
+   
+    $details = [
+        'title' => 'Mail from ItSolutionStuff.com',
+        'body' => 'This is for testing email using smtp'
+    ];
+   
+    Mail::to('baeklyun@naver.com')->send(new \App\Mail\MyTestMail($details));
+   
+    dd("Email is Sent.");
 });

@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\NewPasswordController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,12 +15,29 @@ use App\Http\Controllers\AuthController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
+
+Route::group(['prefix' => 'auth'], function(){
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/login', [AuthController::class, 'login']);
+    
+    Route::group(['middleware' => ['auth:sanctum']], function(){
+        Route::post('/logout', [AuthController::class, 'logout']);
+    });
+});
+
+Route::post('forgot-password', [NewPasswordController::class, 'forgotPassword']);
+Route::post('reset-password', [NewPasswordController::class, 'reset']);
+
 
 Route::group(['middleware' => ['auth:sanctum']], function(){
-    Route::post('/logout', [AuthController::class, 'logout']);
+    
+//Route::apiResource('products', 'ProductController')->except(['update', 'store', 'destory']);
+//Route::apiResource('carts', 'CartController')->except(['update', 'index']);
 });
+
+
+
+
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

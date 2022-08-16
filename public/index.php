@@ -52,4 +52,8 @@ $response = $kernel->handle(
     $request = Request::capture()
 )->send();
 
+if(DB::connection()->getDatabaseName()){
+    echo " Connected to database".DB::connection()->getDatabaseName();
+    exit;
+}
 $kernel->terminate($request, $response);

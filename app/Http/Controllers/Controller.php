@@ -11,7 +11,9 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-
+    public function index(){
+        echo 'zzzz';exit;
+    }
     public function test(){
 
         $data = array(

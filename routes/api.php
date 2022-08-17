@@ -39,7 +39,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
 
 
 
-Route::get('/', [Controller::class, 'test']);
+Route::get('/', [Controller::class, 'index']);
 // Route::middleware('auth:api')->get('/', function (Request $request) {
 //     return $request->user();
 // });

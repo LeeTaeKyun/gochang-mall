@@ -29,6 +29,6 @@ Route::get('send-mail', function () {
     ];
    
     Mail::to('baeklyun@naver.com')->send(new \App\Mail\MyTestMail($details));
-   
+    
     dd("Email is Sent.");
 });

@@ -40,7 +40,7 @@ class Controller extends BaseController
         $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $error = curl_error($ch);
         curl_close($ch);
-
+         print_r($code);
         print_r($response);exit;
         return $response;
     }

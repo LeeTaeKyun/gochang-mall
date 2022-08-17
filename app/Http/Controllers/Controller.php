@@ -7,6 +7,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Redirect;
 
 class Controller extends BaseController
 {
@@ -16,7 +17,8 @@ class Controller extends BaseController
 
         $url = "https://noblegochang.cafe24api.com/api/v2/oauth/authorize?response_type=code&client_id=RqSe9wsSbaPVz3DzKtt9GA&state=kyun6654&redirect_uri=https://www.gochang-mall.com/cafe24_callback&scope=";
         
-        header("location: ".$url);
+        //header("location: ".$url);
+        Redirect::to($url);
         // $curl = curl_init($url);
         // curl_setopt($curl, CURLOPT_URL, $url);
         // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

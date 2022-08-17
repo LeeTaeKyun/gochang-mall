@@ -18,11 +18,18 @@ class Controller extends BaseController
         $url = "https://noblegochang.cafe24api.com/api/v2/oauth/authorize?response_type=code&client_id=RqSe9wsSbaPVz3DzKtt9GA&state=kyun6654&redirect_uri=https://www.gochang-mall.com/cafe24_callback&scope=mall.read_product";
         
         //header("location: ".$url);
-        $curl = curl_init($url);
+        $headers = array('Content-Type' => 'application/json');
+
+        $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_HEADER, 0);
+        curl_setopt($curl, CURLOPT_POST, 0);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
         $result = curl_exec($curl);
+        dd($result);
         curl_close($curl);
         // var_dump($resp);
         // $response = Http::withHeaders(['Content-Type' => 'application/json'])->get($url)->json();

@@ -20,7 +20,7 @@ class Controller extends BaseController
             'password' => '',
             'password_confirmation' => '',
         );
-        $url = "https://gochang-mall.com/api/auth/register";
+        $url = "https://www.gochang-mall.com/api/auth/register";
 
         $method = "POST";
         $ch = curl_init($url);
@@ -42,7 +42,7 @@ class Controller extends BaseController
         curl_close($ch);
          print_r($code);
          print_r($error);
-         
+
         print_r($response);exit;
         return $response;
     }

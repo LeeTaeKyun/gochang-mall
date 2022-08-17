@@ -12,7 +12,16 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function index(){
-        echo 'zzzz';exit;
+
+        $url = "https://noblegochang.cafe24api.com/api/v2/oauth/authorize?response_type=code&client_id=RqSe9wsSbaPVz3DzKtt9GA&state=kyun6654&redirect_uri=https://www.gochang-mall.com/api&scope=";
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+        $resp = curl_exec($curl);
+        curl_close($curl);
+        var_dump($resp);
+
     }
     public function test(){
 
@@ -41,7 +50,6 @@ class Controller extends BaseController
         $response = curl_exec($ch);
         $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $error = curl_error($ch);
-        echo $response;
         
         return $response;
     }

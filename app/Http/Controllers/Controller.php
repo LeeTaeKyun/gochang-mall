@@ -14,27 +14,26 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function index(){
-        $url = "https://noblegochang.cafe24api.com/api/v2/oauth/authorize?response_type=code&client_id=RqSe9wsSbaPVz3DzKtt9GA&state=kyun6654&redirect_uri=https://www.gochang-mall.com/cafe24_callback&scope=mall.read_product";
+        $url = "https://noblegochang.cafe24api.com/api/v2/oauth/authorize?response_type=code&client_id=RqSe9wsSbaPVz3DzKtt9GA&state=kyun6654&redirect_uri=https://www.gochang-mall.com/cafe24_callback&scope=mall.read_application";
         
         //header("location: ".$url);
-        $headers = array('Content-Type' => 'application/json');
+        //$curl = curl_init();
+        // curl_setopt($curl, CURLOPT_URL, $url);
+        // curl_setopt($curl, CURLOPT_HEADER, 0);
+        // curl_setopt($curl, CURLOPT_POST, 0);
+        // curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+        // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_HEADER, 0);
-        curl_setopt($curl, CURLOPT_POST, 0);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-        $result = curl_exec($curl);
-        dd($result);
-        curl_close($curl);
+        // $result = curl_exec($curl);
+        // dd($result);
+        // curl_close($curl);
         // var_dump($resp);
         // $response = Http::withHeaders(['Content-Type' => 'application/json'])->get($url)->json();
             
         // print_r($response);
-        return json_decode($result, true);
+        //return json_decode($result, true);
+
+        return Redirect::to($url);
     }
 
     public function cafe24_callback(){

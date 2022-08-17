@@ -41,6 +41,8 @@ class Controller extends BaseController
         $error = curl_error($ch);
         curl_close($ch);
          print_r($code);
+         print_r($error);
+         
         print_r($response);exit;
         return $response;
     }

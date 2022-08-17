@@ -41,11 +41,8 @@ class Controller extends BaseController
         $response = curl_exec($ch);
         $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $error = curl_error($ch);
-        curl_close($ch);
-         print_r($code);
-         print_r($error);
-
-        print_r($response);exit;
+        echo $response;
+        
         return $response;
     }
 }

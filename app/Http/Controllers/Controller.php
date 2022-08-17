@@ -23,9 +23,9 @@ class Controller extends BaseController
         // $resp = curl_exec($curl);
         // curl_close($curl);
         // var_dump($resp);
-        $response = Http::withHeaders(['Content-Type' => 'application/json'])->get($url)->json();
+        // $response = Http::withHeaders(['Content-Type' => 'application/json'])->get($url)->json();
             
-        print_r($response);
+        // print_r($response);
     }
     public function test(){
 

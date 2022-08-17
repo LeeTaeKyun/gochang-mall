@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\NewPasswordController;
 
 /*
@@ -38,7 +39,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
 
 
 
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/', [Controller::class, 'test']);
+// Route::middleware('auth:api')->get('/', function (Request $request) {
+//     return $request->user();
+// });

@@ -15,14 +15,14 @@ class Controller extends BaseController
     public function index(){
 
         print_r($_GET);
-        header("Location : https://noblegochang.cafe24api.com/api/v2/oauth/authorize?response_type=code&client_id=RqSe9wsSbaPVz3DzKtt9GA&state=kyun6654&redirect_uri=https://www.gochang-mall.com/api&scope=");
-        // $curl = curl_init($url);
-        // curl_setopt($curl, CURLOPT_URL, $url);
-        // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $url = "https://noblegochang.cafe24api.com/api/v2/oauth/authorize?response_type=code&client_id=RqSe9wsSbaPVz3DzKtt9GA&state=kyun6654&redirect_uri=https://www.gochang-mall.com/api&scope=";
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-        // $resp = curl_exec($curl);
-        // curl_close($curl);
-        // var_dump($resp);
+        $resp = curl_exec($curl);
+        curl_close($curl);
+        var_dump($resp);
         // $response = Http::withHeaders(['Content-Type' => 'application/json'])->get($url)->json();
             
         // print_r($response);

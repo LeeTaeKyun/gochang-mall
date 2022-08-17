@@ -14,8 +14,7 @@ class Controller extends BaseController
 
     public function index(){
 
-        print_r($_GET);
-        $url = "https://noblegochang.cafe24api.com/api/v2/oauth/authorize?response_type=code&client_id=RqSe9wsSbaPVz3DzKtt9GA&state=kyun6654&redirect_uri=https://www.gochang-mall.com/api&scope=";
+        $url = "https://noblegochang.cafe24api.com/api/v2/oauth/authorize?response_type=code&client_id=RqSe9wsSbaPVz3DzKtt9GA&state=kyun6654&redirect_uri=https://www.gochang-mall.com/cafe24_callback&scope=";
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -26,6 +25,11 @@ class Controller extends BaseController
         // $response = Http::withHeaders(['Content-Type' => 'application/json'])->get($url)->json();
             
         // print_r($response);
+    }
+
+    public function cafe24_callback(){
+
+        print_r($_GET);exit;
     }
     public function test(){
 

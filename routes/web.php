@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('cafe24-test', [Controller::class, 'test']);
+Route::get('cafe24_callback', [Controller::class, 'cafe24_callback']);
 Route::get('send-mail', function () {
    
     $details = [

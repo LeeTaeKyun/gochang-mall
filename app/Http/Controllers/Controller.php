@@ -6,7 +6,6 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redirect;
 
 class Controller extends BaseController
@@ -37,8 +36,27 @@ class Controller extends BaseController
     }
 
     public function cafe24_callback(){
-
-        print_r($_GET);exit;
+        if(!empty($_GET['code'])){
+            $data = 'grant_type=authorization_code&code='.$_GET["code"].'&redirect_uri={redirect_uri}';
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://noblegochang.cafe24api.com/api/v2/oauth/token',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => $data,
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: Basic {base64_encode(RqSe9wsSbaPVz3DzKtt9GA:f9BlmcndRiwHVayd2FbCzB)}',
+                'Content-Type: application/x-www-form-urlencoded'
+            ),
+            ));
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+            if ($err) {
+            echo 'cURL Error #:' . $err;
+            } else {
+            echo $response;
+            }
+        }
     }
     public function test(){
 

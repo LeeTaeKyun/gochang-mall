@@ -35,9 +35,15 @@ class Controller extends BaseController
         return Redirect::to($url);
     }
 
+    public function cafe24_auth(){
+
+        print_r($_GET);
+        exit;
+    }
+
     public function cafe24_callback(){
         if(!empty($_GET['code'])){
-            $data = 'grant_type=authorization_code&code='.$_GET["code"].'&redirect_uri={redirect_uri}';
+            $data = 'grant_type=authorization_code&code='.$_GET["code"].'&redirect_uri=https://www.gochang-mall.com/cafe24_auth';
             $curl = curl_init();
             curl_setopt_array($curl, array(
             CURLOPT_URL => 'https://noblegochang.cafe24api.com/api/v2/oauth/token',
@@ -58,6 +64,7 @@ class Controller extends BaseController
             }
         }
     }
+        
     public function test(){
 
         $data = array(

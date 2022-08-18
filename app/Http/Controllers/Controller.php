@@ -45,13 +45,17 @@ class Controller extends BaseController
         if(!empty($_GET['code'])){
             $data = 'grant_type=authorization_code&code='.$_GET["code"].'&redirect_uri=https://www.gochang-mall.com/cafe24_auth';
             $curl = curl_init();
+            $clientID = 'RqSe9wsSbaPVz3DzKtt9GA';
+            $clientSK = 'f9BlmcndRiwHVayd2FbCzB';
+            
+            $auth = base64_encode($clientID . ":" . $clientSK);
             curl_setopt_array($curl, array(
             CURLOPT_URL => 'https://noblegochang.cafe24api.com/api/v2/oauth/token',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => $data,
             CURLOPT_HTTPHEADER => array(
-                'Authorization: Basic {base64_encode(RqSe9wsSbaPVz3DzKtt9GA:f9BlmcndRiwHVayd2FbCzB)}',
+                'Authorization: Basic '.$auth,
                 'Content-Type: application/x-www-form-urlencoded'
             ),
             ));

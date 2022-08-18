@@ -37,7 +37,7 @@ class Controller extends BaseController
 
     public function cafe24_auth(){
 
-        print_r($_GET);
+        dd($_GET);
         exit;
     }
 
